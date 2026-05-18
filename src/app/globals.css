@@ -1,26 +1,259 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-pretendard: "Pretendard", sans-serif;
+
+  /* 컬러 시스템 정의 */
+  /* Primary */
+  --color-primary-10: #00197d;
+  --color-primary-20: #00249c;
+  --color-primary-30: #143ac5;
+  --color-primary-40: #2152e5;
+  --color-primary-50: #4478fd;
+  --color-primary-60: #6799f6;
+  --color-primary-70: #98d0ff;
+  --color-primary-80: #bcd5ff;
+  --color-primary-90: #d7e7ff;
+  --color-primary-100: #e4efff;
+  --color-primary-110: #eef5ff;
+  --color-primary-120: #f5f9ff;
+
+  /* Error */
+  --color-error-10: #d91007;
+  --color-error-20: #e7453e;
+  --color-error-30: #f67a74;
+  --color-error-40: #ffbfbc;
+  --color-error-50: #ffeeea;
+
+  /* Black / White */
+  --color-black: #1a1a1a;
+  --color-white: #ffffff;
+
+  /* Grayscale */
+  --color-gray-10: #2a2d35;
+  --color-gray-20: #3b4148;
+  --color-gray-30: #5a636b;
+  --color-gray-40: #778188;
+  --color-gray-50: #9098a6;
+  --color-gray-60: #b5bfc9;
+  --color-gray-70: #d3d8e2;
+  --color-gray-80: #e4e9ee;
+  --color-gray-90: #f2f6f9;
+  --color-gray-100: #f8fafb;
+
+  /* Semantic */
+  --color-semantic-10: #03bf61;
+  --color-semantic-20: #78e000;
+  --color-semantic-30: #ffb619;
+  --color-semantic-40: #e7453e;
+  --color-semantic-50: #9098a6;
+
+  /* 시맨틱 그룹 정의 */
+  /* Primary */
+  --color-semantic-primary-bg: var(--color-primary-40);
+  --color-semantic-primary-text: var(--color-white);
+
+  /* Primary Container */
+  --color-semantic-primary-container-bg: var(--color-primary-100);
+  --color-semantic-primary-container-text: var(--color-primary-30);
+
+  /* on Primary */
+  --color-semantic-on-primary-bg: var(--color-white);
+  --color-semantic-on-primary-text: var(--color-primary-30);
+
+  /* Error */
+  --color-semantic-error-bg: var(--color-error-20);
+  --color-semantic-error-text: var(--color-white);
+
+  /* Error Container */
+  --color-semantic-error-container-bg: var(--color-error-50);
+  --color-semantic-error-container-text: var(--color-error-10);
+
+  /* on Error */
+  --color-semantic-on-error-bg: var(--color-white);
+  --color-semantic-on-error-text: var(--color-error-10);
+
+  /* Container Dim */
+  --color-semantic-container-dim-bg: var(--color-gray-60);
+  --color-semantic-container-dim-text: var(--color-white);
+
+  /* Surface Dim */
+  --color-semantic-surface-dim-bg: var(--color-white);
+  --color-semantic-surface-dim-text: var(--color-gray-50);
+
+  /* On Surface */
+  --color-semantic-on-surface-bg: var(--color-black);
+  --color-semantic-on-surface-text: var(--color-white);
+
+  /* On Surface Variant */
+  --color-semantic-on-surface-variant-bg: var(--color-gray-30);
+  --color-semantic-on-surface-variant-text: var(--color-white);
+
+  /* Outline */
+  --color-semantic-outline-bg: var(--color-gray-80);
+  --color-semantic-outline-text: var(--color-black);
+
+  /* Outline Variant */
+  --color-semantic-outline-variant-bg: var(--color-gray-90);
+  --color-semantic-outline-variant-text: var(--color-black);
+
+  /* 타이포그라피 정의 */
+  /* Headline Base */
+  --text-headline-32: 32px;
+  --text-headline-32--line-height: 130%;
+  --text-headline-32--letter-spacing: -0.02em;
+  --text-headline-32--font-weight: 500;
+
+  --text-headline-28: 28px;
+  --text-headline-28--line-height: 130%;
+  --text-headline-28--letter-spacing: -0.02em;
+  --text-headline-28--font-weight: 500;
+
+  --text-headline-24: 24px;
+  --text-headline-24--line-height: 130%;
+  --text-headline-24--letter-spacing: -0.02em;
+  --text-headline-24--font-weight: 500;
+
+  /* Headline Emphasis */
+  --text-headline-emphasis-32: 32px;
+  --text-headline-emphasis-32--line-height: 130%;
+  --text-headline-emphasis-32--letter-spacing: -0.02em;
+  --text-headline-emphasis-32--font-weight: 600;
+
+  --text-headline-emphasis-28: 28px;
+  --text-headline-emphasis-28--line-height: 130%;
+  --text-headline-emphasis-28--letter-spacing: -0.02em;
+  --text-headline-emphasis-28--font-weight: 600;
+
+  --text-headline-emphasis-24: 24px;
+  --text-headline-emphasis-24--line-height: 130%;
+  --text-headline-emphasis-24--letter-spacing: -0.02em;
+  --text-headline-emphasis-24--font-weight: 600;
+
+  /* Title Base */
+  --text-title-22: 22px;
+  --text-title-22--line-height: 140%;
+  --text-title-22--letter-spacing: -0.02em;
+  --text-title-22--font-weight: 500;
+
+  --text-title-20: 20px;
+  --text-title-20--line-height: 140%;
+  --text-title-20--letter-spacing: -0.02em;
+  --text-title-20--font-weight: 500;
+
+  --text-title-18: 18px;
+  --text-title-18--line-height: 140%;
+  --text-title-18--letter-spacing: -0.02em;
+  --text-title-18--font-weight: 500;
+
+  /* Title Emphasis */
+  --text-title-emphasis-22: 22px;
+  --text-title-emphasis-22--line-height: 140%;
+  --text-title-emphasis-22--letter-spacing: -0.02em;
+  --text-title-emphasis-22--font-weight: 600;
+
+  --text-title-emphasis-20: 20px;
+  --text-title-emphasis-20--line-height: 140%;
+  --text-title-emphasis-20--letter-spacing: -0.02em;
+  --text-title-emphasis-20--font-weight: 600;
+
+  --text-title-emphasis-18: 18px;
+  --text-title-emphasis-18--line-height: 140%;
+  --text-title-emphasis-18--letter-spacing: -0.02em;
+  --text-title-emphasis-18--font-weight: 600;
+
+  /* Body Base */
+  --text-body-19: 19px;
+  --text-body-19--line-height: 150%;
+  --text-body-19--letter-spacing: -0.02em;
+  --text-body-19--font-weight: 400;
+
+  --text-body-17: 17px;
+  --text-body-17--line-height: 150%;
+  --text-body-17--letter-spacing: -0.02em;
+  --text-body-17--font-weight: 400;
+
+  --text-body-15: 15px;
+  --text-body-15--line-height: 150%;
+  --text-body-15--letter-spacing: -0.02em;
+  --text-body-15--font-weight: 400;
+
+  /* Body Emphasis */
+  --text-body-emphasis-19: 19px;
+  --text-body-emphasis-19--line-height: 150%;
+  --text-body-emphasis-19--letter-spacing: -0.02em;
+  --text-body-emphasis-19--font-weight: 500;
+
+  --text-body-emphasis-17: 17px;
+  --text-body-emphasis-17--line-height: 150%;
+  --text-body-emphasis-17--letter-spacing: -0.02em;
+  --text-body-emphasis-17--font-weight: 500;
+
+  --text-body-emphasis-15: 15px;
+  --text-body-emphasis-15--line-height: 150%;
+  --text-body-emphasis-15--letter-spacing: -0.02em;
+  --text-body-emphasis-15--font-weight: 500;
+
+  /* Label Base */
+  --text-label-17: 17px;
+  --text-label-17--line-height: 140%;
+  --text-label-17--letter-spacing: -0.02em;
+  --text-label-17--font-weight: 500;
+
+  --text-label-15: 15px;
+  --text-label-15--line-height: 140%;
+  --text-label-15--letter-spacing: -0.02em;
+  --text-label-15--font-weight: 500;
+
+  --text-label-13: 13px;
+  --text-label-13--line-height: 140%;
+  --text-label-13--letter-spacing: -0.02em;
+  --text-label-13--font-weight: 500;
+
+  /* Label Emphasis */
+  --text-label-emphasis-17: 17px;
+  --text-label-emphasis-17--line-height: 140%;
+  --text-label-emphasis-17--letter-spacing: -0.02em;
+  --text-label-emphasis-17--font-weight: 600;
+
+  --text-label-emphasis-15: 15px;
+  --text-label-emphasis-15--line-height: 140%;
+  --text-label-emphasis-15--letter-spacing: -0.02em;
+  --text-label-emphasis-15--font-weight: 600;
+
+  --text-label-emphasis-13: 13px;
+  --text-label-emphasis-13--line-height: 140%;
+  --text-label-emphasis-13--letter-spacing: -0.02em;
+  --text-label-emphasis-13--font-weight: 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html,
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-pretendard);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
