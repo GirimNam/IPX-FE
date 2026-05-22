@@ -23,6 +23,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@use-funnel/browser": "^0.0.17",
+    "@use-funnel/next": "^0.0.23",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",

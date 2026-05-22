@@ -14,6 +14,9 @@ importers:
       '@use-funnel/browser':
         specifier: ^0.0.17
         version: 0.0.17(react@19.2.4)
+      '@use-funnel/next':
+        specifier: ^0.0.23
+        version: 0.0.23(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1332,6 +1335,12 @@ packages:
   '@use-funnel/core@0.1.0':
     resolution: {integrity: sha512-KEjBKTbOh5wd6CQZ1jYWhI6KuGrI9Pjn9CkmUgAYzonsyZE0lsiZ2/1RwsaWcxVO5RJBgfwCM8dRpibwm7An9w==}
     peerDependencies:
+      react: '>=16.8'
+
+  '@use-funnel/next@0.0.23':
+    resolution: {integrity: sha512-rVNXDzT3qxujzyFdM6cuqbdhtj6VqQXQyS2tr7F1be/jnewZAJZAJZt1TfWdcepr/sohN8jLutmyeQtVTHYhlA==}
+    peerDependencies:
+      next: '>=12'
       react: '>=16.8'
 
   acorn-jsx@5.3.2:
@@ -4234,6 +4243,12 @@ snapshots:
 
   '@use-funnel/core@0.1.0(react@19.2.4)':
     dependencies:
+      react: 19.2.4
+
+  '@use-funnel/next@0.0.23(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@use-funnel/core': 0.1.0(react@19.2.4)
+      next: 16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react: 19.2.4
 
   acorn-jsx@5.3.2(acorn@8.16.0):

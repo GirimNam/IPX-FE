@@ -1,8 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CodeInput } from "@/components/auth/CodeInput";
 import { Button } from "@/components/ui/Button";
@@ -15,10 +13,13 @@ function formatTime(seconds: number) {
   return `${m}분 ${s}초`;
 }
 
-function ResetPasswordVerifyContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email") ?? "";
+interface Props {
+  email: string;
+  onNext: () => void;
+  onPrev: () => void;
+}
+
+export function VerifyStep({ email, onNext, onPrev }: Props) {
   const [secondsLeft, setSecondsLeft] = useState(INITIAL_SECONDS);
   const [code, setCode] = useState("");
 
@@ -51,14 +52,10 @@ function ResetPasswordVerifyContent() {
       </div>
       <div className="flex w-full flex-col items-start gap-6">
         <div className="flex w-full gap-3">
-          <Button variant="secondary" onClick={() => router.back()}>
+          <Button variant="secondary" onClick={onPrev}>
             이전
           </Button>
-          <Button
-            variant="primary"
-            disabled={code.length < 6 || expired}
-            onClick={() => router.push("/reset-password/new-password")}
-          >
+          <Button variant="primary" disabled={code.length < 6 || expired} onClick={onNext}>
             인증
           </Button>
         </div>
@@ -72,13 +69,5 @@ function ResetPasswordVerifyContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function ResetPasswordVerify() {
-  return (
-    <Suspense>
-      <ResetPasswordVerifyContent />
-    </Suspense>
   );
 }
