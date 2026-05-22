@@ -25,14 +25,16 @@ export function AgreementItem({
           <span className="text-label-15 text-gray-30">{label}</span>
         </span>
       </label>
-      <button
-        type="button"
-        aria-label={`${label} 상세 보기`}
-        onClick={onDetail}
-        className="flex cursor-pointer items-center"
-      >
-        <ArrowIcon className="size-5 text-gray-50" />
-      </button>
+      {onDetail && (
+        <button
+          type="button"
+          aria-label={`${label} 상세 보기`}
+          onClick={onDetail}
+          className="flex cursor-pointer items-center"
+        >
+          <ArrowIcon className="size-5 text-gray-50" />
+        </button>
+      )}
     </div>
   );
 }

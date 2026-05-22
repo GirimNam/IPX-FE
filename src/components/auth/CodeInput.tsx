@@ -4,6 +4,7 @@ import { useRef, type ChangeEvent, type ClipboardEvent, type KeyboardEvent } fro
 import { cn } from "@/lib/cn";
 
 type CellProps = {
+  index: number;
   value: string;
   error?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -13,7 +14,7 @@ type CellProps = {
   ref: React.Ref<HTMLInputElement>;
 };
 
-function Cell({ value, error, ref, ...handlers }: CellProps) {
+function Cell({ index, value, error, ref, ...handlers }: CellProps) {
   return (
     <input
       ref={ref}
@@ -21,6 +22,7 @@ function Cell({ value, error, ref, ...handlers }: CellProps) {
       inputMode="numeric"
       maxLength={1}
       value={value}
+      aria-label={`인증코드 ${index + 1}번째 자리`}
       className={cn(
         "h-20.5 w-[73.333px] rounded-md border-[1.5px] border-gray-80 bg-gray-100 text-center text-headline-emphasis-32 text-black focus:outline-none",
         error && "border-error-20"
@@ -67,6 +69,7 @@ export function CodeInput({ value, onChange, length = 6, error, autoFocus }: Cod
       {Array.from({ length }).map((_, i) => (
         <Cell
           key={i}
+          index={i}
           ref={(el) => {
             refs.current[i] = el;
           }}
