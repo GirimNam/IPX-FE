@@ -106,6 +106,12 @@
   --color-semantic-outline-variant-text: var(--color-black);
 
   /* 타이포그라피 정의 */
+  /* Display */
+  --text-display-40: 40px;
+  --text-display-40--line-height: 130%;
+  --text-display-40--letter-spacing: -0.02em;
+  --text-display-40--font-weight: 700;
+
   /* Headline Base */
   --text-headline-32: 32px;
   --text-headline-32--line-height: 130%;
