@@ -26,7 +26,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex max-w-[500px] flex-1 flex-col items-start justify-center gap-10 self-stretch">
+    <div className="flex max-w-125 flex-1 flex-col items-start justify-center gap-10 self-stretch">
       <h1 className="text-headline-emphasis-28 text-gray-10">회원가입</h1>
       <div className="flex w-full flex-col items-start gap-6">
         <div className="flex w-full flex-col items-start gap-7">

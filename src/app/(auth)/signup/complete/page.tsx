@@ -7,7 +7,7 @@ export default function SignupComplete() {
   const router = useRouter();
 
   return (
-    <div className="flex max-w-[500px] flex-1 flex-col items-start justify-center gap-10 self-stretch">
+    <div className="flex max-w-125 flex-1 flex-col items-start justify-center gap-10 self-stretch">
       <div className="flex w-full flex-col items-start gap-2">
         <h1 className="text-headline-emphasis-28 text-gray-10">회원가입이 완료되었습니다</h1>
         <p className="text-body-19 text-gray-30">

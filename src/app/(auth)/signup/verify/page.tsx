@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ function formatTime(seconds: number) {
   return `${m}분 ${s}초`;
 }
 
-export default function SignupVerify() {
+function SignupVerifyContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") ?? "";
@@ -30,7 +31,7 @@ export default function SignupVerify() {
   const expired = secondsLeft <= 0;
 
   return (
-    <div className="flex max-w-[500px] flex-1 flex-col items-start justify-center gap-10 self-stretch">
+    <div className="flex max-w-125 flex-1 flex-col items-start justify-center gap-10 self-stretch">
       <div className="flex w-full flex-col items-start gap-2">
         <h1 className="text-headline-emphasis-28 text-gray-10">인증 코드 입력</h1>
         <p className="flex items-baseline gap-2 text-body-19 text-gray-30">
@@ -71,5 +72,13 @@ export default function SignupVerify() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignupVerify() {
+  return (
+    <Suspense>
+      <SignupVerifyContent />
+    </Suspense>
   );
 }
