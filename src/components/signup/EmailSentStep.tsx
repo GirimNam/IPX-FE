@@ -1,8 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CodeInput } from "@/components/auth/CodeInput";
 import { Button } from "@/components/ui/Button";
@@ -15,10 +13,13 @@ function formatTime(seconds: number) {
   return `${m}분 ${s}초`;
 }
 
-function SignupVerifyContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email") ?? "";
+type EmailSentStepProps = {
+  email: string;
+  onNext: () => void;
+  onBack: () => void;
+};
+
+export const EmailSentStep = ({ email, onNext, onBack }: EmailSentStepProps) => {
   const [secondsLeft, setSecondsLeft] = useState(INITIAL_SECONDS);
   const [code, setCode] = useState("");
 
@@ -51,14 +52,10 @@ function SignupVerifyContent() {
       </div>
       <div className="flex w-full flex-col items-start gap-6">
         <div className="flex w-full gap-3">
-          <Button variant="secondary" onClick={() => router.back()}>
+          <Button variant="secondary" onClick={onBack}>
             이전
           </Button>
-          <Button
-            variant="primary"
-            disabled={code.length < 6 || expired}
-            onClick={() => router.push("/signup/profile")}
-          >
+          <Button variant="primary" disabled={code.length < 6 || expired} onClick={onNext}>
             인증
           </Button>
         </div>
@@ -73,12 +70,4 @@ function SignupVerifyContent() {
       </div>
     </div>
   );
-}
-
-export default function SignupVerify() {
-  return (
-    <Suspense>
-      <SignupVerifyContent />
-    </Suspense>
-  );
-}
+};
