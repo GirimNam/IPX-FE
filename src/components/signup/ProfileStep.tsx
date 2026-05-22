@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
+
 import { AgreementItem } from "@/components/auth/AgreementItem";
 import { PasswordField } from "@/components/auth/PasswordField";
 import { Button } from "@/components/ui/Button";
@@ -25,16 +25,20 @@ const schema = z
     path: ["passwordConfirm"],
   });
 
-type FormValues = z.infer<typeof schema>;
+export type ProfileFormValues = z.infer<typeof schema>;
 
-export default function SignupProfile() {
-  const router = useRouter();
+type ProfileStepProps = {
+  onSubmit: (values: ProfileFormValues) => void;
+  onBack: () => void;
+};
+
+export const ProfileStep = ({ onSubmit, onBack }: ProfileStepProps) => {
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<ProfileFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
       name: "",
@@ -48,10 +52,6 @@ export default function SignupProfile() {
   });
 
   const agreementError = errors.agreedTerms ?? errors.agreedPrivacy;
-
-  const onSubmit = () => {
-    router.push("/signup/complete");
-  };
 
   return (
     <form
@@ -118,7 +118,7 @@ export default function SignupProfile() {
         />
       </div>
       <div className="flex w-full gap-3">
-        <Button variant="secondary" type="button" onClick={() => router.back()}>
+        <Button variant="secondary" type="button" onClick={onBack}>
           이전
         </Button>
         <Button variant="primary" type="submit">
@@ -127,4 +127,4 @@ export default function SignupProfile() {
       </div>
     </form>
   );
-}
+};

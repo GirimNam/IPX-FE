@@ -1,11 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 
-export default function SignupComplete() {
-  const router = useRouter();
+type CompleteStepProps = {
+  onGoLogin: () => void;
+};
 
+export const CompleteStep = ({ onGoLogin }: CompleteStepProps) => {
   return (
     <div className="flex max-w-125 flex-1 flex-col items-start justify-center gap-10 self-stretch">
       <div className="flex w-full flex-col items-start gap-2">
@@ -14,9 +15,9 @@ export default function SignupComplete() {
           IPX에 오신 것을 환영합니다. 지금 바로 첫 탐색을 시작하세요!
         </p>
       </div>
-      <Button variant="primary" onClick={() => router.push("/login")}>
+      <Button variant="primary" onClick={onGoLogin}>
         로그인
       </Button>
     </div>
   );
-}
+};
