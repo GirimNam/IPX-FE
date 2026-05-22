@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import LogoIpxFigure from "@/components/icons/logo-ipx-figure.svg";
 import LogoIpxChar from "@/components/icons/logo-ipx-char.svg";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
