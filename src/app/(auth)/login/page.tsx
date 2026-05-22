@@ -37,7 +37,8 @@ export default function Login() {
       return;
     }
     setErrors({});
-    router.push(`/signup/verify?email=${encodeURIComponent(email)}`);
+    //router.push(`/signup/verify?email=${encodeURIComponent(email)}`);
+    // 로그인 성공 시 이동할 페이지 추가 예정
   };
 
   return (
